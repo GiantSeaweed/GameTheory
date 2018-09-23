@@ -1,0 +1,56 @@
+%!TEX program = xelatex
+\documentclass[a4papers]{ctexart}
+%数学符号
+\usepackage{amssymb}
+\usepackage{amsmath}
+%表格
+\usepackage{graphicx,floatrow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{makecell}
+%页边距
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=1cm,bottom=2cm}
+
+%首行缩进两字符 利用\indent \noindent进行控制
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\setromanfont{Songti SC}
+%\setromanfont{Heiti SC}
+
+\usepackage{pstricks,pst-plot}
+
+
+\title{Game Theory \\Homework 1}
+\author{161220039 冯诗伟 }
+\date{}
+\begin{document}
+\maketitle
+\section*{Exercise a}
+
+
+\section*{Exercise b}
+
+
+\section*{Exercise c}
+
+
+\section*{Exercise d}
+\noindent Prove that in n-Cournet case, the Nash Equilibria is given by
+\[ \Big\{ \Big(\dfrac{a-c}{(n+1)b},\cdots,\dfrac{a-c}{(n+1)b}  \Big) \Big\} \]
+Proof:\\ Assmue that $(q_1^*,q_2^*,\cdots,q_n^*)$ is a Nash equilibrium.\\
+First, prove that $q_i^*$ > 0 by contradiction. Suppose that $q_i^* = 0,$ for $i=1,2,\cdots,n$.
+Then we get $u(q_1^*,q_2^*,\cdots,q_n^*)=(a-b(q_1^*+q_2^*+\cdots+q_n^*)-c)q_i^* =0,$ for $i=1,2,\cdots,n$.
+So, $q_i^*$ can not equal 0 at the same time.\\
+Without the loss of generality, assume that $q_1^*=0$, while $q_i > 0$, for $i=2,3\cdots,n$.\\
+From
+\[\dfrac{\partial u_i(q_1^*,q_2^*,\cdots,q_n^*)}{\partial q_i} = 0  & {i=2,3,\codts,n}\\\]
+We get \[q_i = \dfrac{\]
+
+\section*{Exercise e}
+
+
+
+    
+\end{document}

@@ -1,0 +1,116 @@
+%!TEX program = xelatex
+\documentclass[a4papers]{ctexart}
+%数学符号
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+%表格
+\usepackage{graphicx,floatrow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{makecell}
+%页边距
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=1.5cm,bottom=2cm}
+
+%首行缩进两字符 利用\indent \noindent进行控制
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\setromanfont{Songti SC}
+%\setromanfont{Heiti SC}
+
+\usepackage{pstricks,pst-plot}
+
+
+\title{Game Theory -- Homework 1}
+\author{161220039 冯诗伟 }
+\date{}
+\begin{document}
+\maketitle
+\section*{Exercise a}
+\noindent Solution:
+\[\because S_{n+1}\ge 2S_n \]\[\therefore a_{n+1}\ge S_n\]
+\[\therefore a_n \ge S_{n-1} \ge 2^1 S_{n-2} \ge 2^2 S_{n-3} \ge \cdots \ge 2^{n-2}S_1 , n\ge 2\]
+\[ \therefore \dfrac{a_n}{2^n} \ge \dfrac{S_1}{4} = \dfrac{a_1}{4}\]
+There exists a constant $c \in (0,\dfrac{a_1}{4}]$, such that $a_n \ge 2^n c$ for every positive $n$.
+
+\section*{Exercise b}
+\noindent Suppose that the eigenvalue is $\lambda$.
+\[ \begin{pmatrix}
+2 &  -1 & b \\5 &  a &  3\\ -1 &  2 &  -1
+\end{pmatrix}
+\begin{pmatrix}
+1 \\  1 \\ -1
+\end{pmatrix}
+= \lambda \begin{pmatrix}
+1 \\  1 \\ -1
+\end{pmatrix}
+\]
+\begin{equation*}
+    \begin{cases}
+        2-1-b=\lambda & \\
+        5+a-3=\lambda & \\
+        -1+2+1=-\lambda & \\
+    \end{cases}
+\end{equation*}
+\[\therefore a=-4,\,b=3,\,\lambda=-4\]
+
+\section*{Exercise c}
+Prove that $f(\epsilon) = \dfrac{1}{2}(1+\sqrt{1+4\epsilon^2})e^{1-\sqrt{1+4\epsilon^2}+(\epsilon^2-\epsilon^3)/2}\le 1$.
+\[ g(\epsilon)=lnf(\epsilon) =ln(1+\sqrt{1+4\epsilon^2})-\sqrt{1+4\epsilon^2}+1-ln2-\dfrac{1}{2}\epsilon^3+\dfrac{1}{2}\epsilon^2\]
+\[ g'(\epsilon) = -\dfrac{4\epsilon}{\sqrt{1+4\epsilon^2}}-\dfrac{3}{2}\epsilon^2+\epsilon \]
+\[ g''(\epsilon)=-\dfrac{4}{(1+\sqrt{1+4\epsilon^2})\sqrt{1+4\epsilon^2}}-3\epsilon+1\]
+
+\section*{Exercise d}
+\noindent Prove that in n-Cournet case, the Nash Equilibria is given by
+\[ \Big\{ \Big(\dfrac{a-c}{(n+1)b},\cdots,\dfrac{a-c}{(n+1)b}  \Big) \Big\} \]
+
+\begin{proof}
+ Assmue that $(q_1^*,q_2^*,\cdots,q_n^*)$ is a Nash equilibrium.\\
+First, prove that $q_i^*$ > 0 by contradiction. Suppose that $q_i^* = 0,$ for $i=1,2,\cdots,n$.
+Then we get $u(q_1^*,q_2^*,\cdots,q_n^*)=(a-b(q_1^*+q_2^*+\cdots+q_n^*)-c)q_i^* =0,$ for $i=1,2,\cdots,n$.
+So, $q_i^*$ can not equal 0 at the same time.\\
+Without the loss of generality, assume that $q_1^*=0$, while $q_i > 0$, for $i=2,3\cdots,n$.\\
+From
+\begin{equation*}
+    \begin{cases}
+        q_1^* = 0 \\
+        \dfrac{\partial u_i(q_1^*,q_2^*,\cdots,q_n^*)}{\partial q_i} = 0 & i=2,3,\cdots,n
+    \end{cases}
+\end{equation*}
+We get \[q_i^* = \dfrac{a-c-b\sum_{k=2,k\ne i}^{n}q_k^*}{2b} > 0,i=2,3,\cdots,n \]
+and from this equation, we can get\[bq_i^* = a-c-b \sum_{k=2}^{n}q_k^* > 0,i=2,3,\cdots,n \]
+%  \[ a-c > b\sum_{i=2}^n q_i^*   \]
+By definition of Nash equilibrium, 
+\[ q_1^* = max \Big\{ 0,\dfrac{a-c-b\sum_{i=2}^{n}q_i^*}{2b} \Big\} = max\Big\{ 0,\dfrac{bq_i^*}{2b}\Big\} = \dfrac{q_i^*}{2}, i=2,3,\cdots,n \]
+% \begin{alignat*}{2}
+% \dfrac{a-c-b\sum_{i=2}^{n}q_i^*}{2b} 
+% &= \dfrac{a-c-b\sum_{i=2}^{n}\frac{a-c-b\sum_{k=2,k\ne i}^{n}q_k^*}{2b} }{2b} \\
+% &= \dfrac{(3-n)(a-c)+(n-1)(n-2)b \sum_{i=2}^n q_i^* }{4b}\\
+% &>  \dfrac{(3-n)b\sum_{i=2}^n q_i^*+(n-1)(n-2)b \sum_{i=2}^n q_i^* }{4b}\\
+% &= \dfrac{(3-n)\sum_{i=2}^n q_i^*+(n-1)(n-2) \sum_{i=2}^n q_i^* }{4}\\
+% &= \dfrac{[(n-2)^2+1]\sum_{i=2}^n q_i^*}{4} > 0
+% \end{alignat*}
+\[\therefore q_1^* \ne 0\]
+We get the contradiction, so $q_i^* > 0,$ for $i=1,2,\cdots,n.$
+\\ \\ 
+Second, since $q_i^* > 0,\,i=1,2,\cdots,n$,we have $n$ equations.
+\[ q_i^* = \dfrac{a-c-b\sum_{k=1,k\ne i}^{n}q_k^*}{2b},\, i=1,2,\cdots,n.\]
+\[ \therefore q_i^* = \dfrac{a-c-b\sum_{k=1}^{n}q_k^*}{b},\, i=1,2,\cdots,n.\]
+\[ \therefore \sum_{i=1}^{n} q_i^*= \dfrac{n(a-c)}{b} - n\sum_{k=1}^{n}q_k^* \]
+\[ \sum_{i=1}^{n} q_i^* = \dfrac{n(a-c)}{(n+1)b}\]
+\[ \therefore q_i^* = \dfrac{a-c}{b}-\dfrac{n(a-c)}{(n+1)b}=\dfrac{a-c}{(n+1)b},\,i=1,2,\cdots,n  \]
+In conclusion,\,in n-Cournet case the Nash Equilibria is given by
+\[ \Big\{ \Big(\dfrac{a-c}{(n+1)b},\cdots,\dfrac{a-c}{(n+1)b}  \Big) \Big\} \]
+\end{proof}
+
+\section*{Exercise e}
+\noindent Solution:
+\[ B_1(h)=\{ c\},B_1(i)=\{ e\},B_1(j)=\{ e\},B_1(k)=\{ b,c\},B_1(l)=\{ e\},B_1(m)=\{ e\}\]
+\[ B_2(a)=\{ i,l\},B_2(b)=\{ h \},B_2(c)=\{ m\},B_2(d)=\{ m\},B_2(e)=\{ l\}\]
+Therefore, a pure Nash Equilibrium is $\{ (e,l)\}.$
+
+\section*{Exercise f}
+
+\end{document}
